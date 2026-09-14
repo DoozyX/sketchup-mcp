@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Black aluminium fence — fabrication sheet</title>
+  <style>
+    :root {
+      --paper: #f4f7f8; --sheet: #fff; --ink: #171b1d; --muted: #667177;
+      --aluminium: #768087; --dimension: #176b87; --warning: #d97917;
+      --line: #cbd4d8; --soft: #e8eef0; --shadow: 0 24px 70px rgb(23 27 29 / 10%);
+      --radius: 3px; color: var(--ink); background: var(--paper);
+      font-family: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; min-width: 320px; background: linear-gradient(rgb(23 107 135 / 4%) 1px, transparent 1px), linear-gradient(90deg, rgb(23 107 135 / 4%) 1px, transparent 1px), var(--paper); background-size: 24px 24px; }
+    button { font: inherit; }
+    button:focus-visible, [tabindex]:focus-visible { outline: 3px solid rgb(23 107 135 / 30%); outline-offset: 3px; }
+    .topbar { position: sticky; z-index: 20; top: 0; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 12px clamp(18px, 4vw, 56px); color: #fff; background: rgb(23 27 29 / 96%); backdrop-filter: blur(12px); }
+    .brand { display: flex; align-items: baseline; gap: 12px; min-width: 0; }
+    .brand strong { font-family: "Arial Narrow", "Avenir Next Condensed", sans-serif; font-size: 15px; letter-spacing: .12em; text-transform: uppercase; }
+    .brand span { color: #aeb9be; font: 11px/1.3 ui-monospace, "SFMono-Regular", Consolas, monospace; }
+    .toolbar, .filters { display: flex; gap: 8px; }
+    .toolbar button, .filters button { border: 1px solid currentColor; border-radius: var(--radius); padding: 8px 12px; color: inherit; background: transparent; cursor: pointer; }
+    .toolbar button:hover { color: #9bd4e7; }
+    .document { width: min(1480px, calc(100% - 32px)); margin: 34px auto 70px; background: var(--sheet); box-shadow: var(--shadow); }
+    .title-block { display: grid; grid-template-columns: minmax(0, 1fr) 330px; min-height: 330px; border-bottom: 1px solid var(--ink); }
+    .hero { position: relative; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; padding: clamp(34px, 6vw, 86px); background: linear-gradient(120deg, transparent 0 72%, rgb(23 107 135 / 9%) 72%), var(--sheet); }
+    .eyebrow, .sheet-label { margin: 0 0 16px; color: var(--dimension); font: 700 11px/1.2 ui-monospace, "SFMono-Regular", Consolas, monospace; letter-spacing: .15em; text-transform: uppercase; }
+    h1, h2, h3 { font-family: "Arial Narrow", "Avenir Next Condensed", sans-serif; }
+    h1 { max-width: 760px; margin: 0; font-size: clamp(52px, 8vw, 112px); font-weight: 800; letter-spacing: -.055em; line-height: .82; text-transform: uppercase; }
+    .hero-summary { display: flex; flex-wrap: wrap; gap: 24px; margin-top: 60px; }
+    .metric { min-width: 120px; }
+    .metric b { display: block; font: 700 28px/1 ui-monospace, "SFMono-Regular", Consolas, monospace; }
+    .metric small { color: var(--muted); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+    .meta { display: grid; align-content: end; border-left: 1px solid var(--ink); background: var(--ink); color: white; }
+    .meta-row { display: grid; grid-template-columns: 92px 1fr; gap: 16px; padding: 16px 22px; border-top: 1px solid #394145; font-size: 12px; }
+    .meta-row dt { color: #9eaaaf; font: 10px/1.4 ui-monospace, "SFMono-Regular", Consolas, monospace; text-transform: uppercase; }
+    .meta-row dd { margin: 0; }
+    .notice { display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: center; margin: 0; padding: 20px clamp(24px, 5vw, 72px); border-bottom: 1px solid #efc99f; background: #fff8ee; }
+    .notice strong { padding: 5px 8px; color: white; background: var(--warning); font: 800 10px/1 ui-monospace, "SFMono-Regular", Consolas, monospace; letter-spacing: .1em; }
+    .notice p { margin: 0; font-size: 13px; }
+    .filters { flex-wrap: wrap; padding: 24px clamp(24px, 5vw, 72px) 0; color: var(--muted); }
+    .filters button[aria-pressed="true"] { color: white; border-color: var(--dimension); background: var(--dimension); }
+    .sheet { padding: 48px clamp(24px, 5vw, 72px) 56px; border-bottom: 1px solid var(--ink); }
+    .sheet-heading { display: grid; grid-template-columns: 1fr minmax(220px, 360px); gap: 30px; align-items: end; margin-bottom: 28px; }
+    h2 { margin: 0; font-size: clamp(30px, 5vw, 56px); letter-spacing: -.035em; line-height: .95; text-transform: uppercase; }
+    .sheet-heading p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.55; }
+    .drawing { overflow-x: auto; border: 1px solid var(--line); background: linear-gradient(rgb(23 107 135 / 5%) 1px, transparent 1px), linear-gradient(90deg, rgb(23 107 135 / 5%) 1px, transparent 1px), #fbfdfe; background-size: 20px 20px; }
+    svg { display: block; width: 100%; min-width: 880px; height: auto; }
+    .metal-fill { fill: var(--ink); } .metal-line { fill: none; stroke: var(--ink); stroke-width: 3; }
+    .slat { fill: var(--aluminium); stroke: var(--ink); stroke-width: 1.2; }
+    .post { fill: #343b3e; stroke: var(--ink); stroke-width: 1.5; }
+    .infill { fill: #d5bf91; stroke: var(--ink); stroke-width: 1.3; }
+    .ghost { fill: #edf1f2; stroke: #899399; stroke-dasharray: 7 5; }
+    .datum { stroke: #69747a; stroke-width: 1.2; }
+    .dim { fill: none; stroke: var(--dimension); stroke-width: 1.5; marker-start: url(#arrow); marker-end: url(#arrow); }
+    .extension { stroke: var(--dimension); stroke-width: 1; }
+    .dim-text, .part-code, .svg-note { font-family: ui-monospace, "SFMono-Regular", Consolas, monospace; }
+    .dim-text { fill: var(--dimension); font-size: 13px; font-weight: 700; }
+    .part-code { fill: white; font-size: 11px; font-weight: 800; }
+    .svg-note { fill: var(--muted); font-size: 11px; }
+    [data-part] { transition: opacity 150ms ease, filter 150ms ease; }
+    [data-part].is-dimmed { opacity: .14; }
+    svg [data-part].is-active { filter: drop-shadow(0 0 5px rgb(23 107 135 / 70%)); }
+    tr[data-part].is-active { background: #e8f4f8; }
+    .legend { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 14px; color: var(--muted); font-size: 11px; }
+    .legend span { display: inline-flex; align-items: center; gap: 7px; }
+    .swatch { width: 18px; height: 9px; border: 1px solid var(--ink); }
+    .swatch.cut { background: var(--aluminium); } .swatch.assembly { border-style: dashed; background: var(--soft); }
+    .swatch.reference { border: 0; border-top: 2px solid var(--dimension); }
+    .module-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 22px; }
+    .module-card { border: 1px solid var(--line); padding: 16px; }
+    .module-card b { display: block; margin-bottom: 8px; font: 700 13px/1.2 ui-monospace, "SFMono-Regular", Consolas, monospace; }
+    .module-card p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line); }
+    table { width: 100%; min-width: 940px; border-collapse: collapse; font-size: 12px; }
+    th, td { padding: 13px 12px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    th:last-child, td:last-child { border-right: 0; } tr:last-child td { border-bottom: 0; }
+    th { color: #fff; background: var(--ink); font: 700 10px/1.2 ui-monospace, "SFMono-Regular", Consolas, monospace; letter-spacing: .08em; text-transform: uppercase; }
+    td.code, td.measure, td.qty, td.pid { font-family: ui-monospace, "SFMono-Regular", Consolas, monospace; }
+    td.code { color: var(--dimension); font-weight: 800; } td.qty { font-size: 16px; font-weight: 800; text-align: center; }
+    td.pid { color: var(--muted); font-size: 10px; }
+    .badge { display: inline-block; border: 1px solid currentColor; padding: 3px 6px; font: 800 9px/1 ui-monospace, "SFMono-Regular", Consolas, monospace; letter-spacing: .06em; text-transform: uppercase; }
+    .badge.cut { color: #176b4f; } .badge.verify { color: var(--warning); } .badge.reference { color: var(--dimension); }
+    .schedule-note { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; margin-top: 22px; }
+    .note-card { border-left: 3px solid var(--dimension); padding: 4px 0 4px 16px; }
+    .note-card.warning { border-color: var(--warning); }
+    .note-card h3 { margin: 0 0 8px; font-size: 18px; text-transform: uppercase; }
+    .note-card p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.6; }
+    .footer { display: grid; grid-template-columns: 1fr auto; gap: 24px; padding: 18px 24px; background: var(--ink); color: #c1c9cc; font: 10px/1.5 ui-monospace, "SFMono-Regular", Consolas, monospace; }
+    [hidden] { display: none !important; }
+    @media (max-width: 850px) { .title-block { grid-template-columns: 1fr; } .meta { border-left: 0; } .sheet-heading, .schedule-note { grid-template-columns: 1fr; } .module-grid { grid-template-columns: 1fr; } .brand span { display: none; } }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } [data-part] { transition: none; } }
+    @page { size: A3 landscape; margin: 10mm; }
+    @media print { :root, body { background: white; } body { print-color-adjust: exact; -webkit-print-color-adjust: exact; } .topbar, .filters { display: none; } .document { width: 100%; margin: 0; box-shadow: none; } .title-block { min-height: 0; } .hero { padding: 16mm; } h1 { font-size: 56pt; } .sheet { padding: 10mm 0; break-before: page; } .drawing, .table-wrap { overflow: visible; } svg, table { min-width: 0; } .module-grid { grid-template-columns: repeat(3, 1fr); } .schedule-note { grid-template-columns: repeat(2, 1fr); } [data-section][hidden] { display: block !important; } }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><strong>Elysian House / Fence Package</strong><span>MODEL-DERIVED · REV 01 · MILLIMETRES</span></div>
+    <div class="toolbar"><button type="button" id="clearHighlight">Clear highlight</button><button type="button" id="printSheet">Print A3</button></div>
+  </header>
+
+  <main class="document">
+    <section class="title-block">
+      <div class="hero">
+        <div><p class="eyebrow">Fabrication survey / black aluminium only</p><h1>Fence<br>cut sheet</h1></div>
+        <div class="hero-summary" aria-label="Package summary">
+          <div class="metric"><b>9</b><small>Fence modules</small></div><div class="metric"><b>63</b><small>Horizontal slats</small></div>
+          <div class="metric"><b>18</b><small>Fence posts</small></div><div class="metric"><b>2</b><small>Gate leaves</small></div>
+        </div>
+      </div>
+      <dl class="meta">
+        <div class="meta-row"><dt>Project</dt><dd>Elysian House Yard</dd></div><div class="meta-row"><dt>Source</dt><dd>Active SketchUp model</dd></div>
+        <div class="meta-row"><dt>Selection</dt><dd>Fence PID 379802 + gate PID 1106226</dd></div><div class="meta-row"><dt>Material</dt><dd>Anthracite / black aluminium</dd></div>
+        <div class="meta-row"><dt>Units</dt><dd>All dimensions in millimetres</dd></div><div class="meta-row"><dt>Drawing</dt><dd>Diagrammatic — written dimensions govern</dd></div>
+      </dl>
+    </section>
+
+    <aside class="notice" role="note"><strong>HOLD POINT</strong><p><b>Verify all site openings before cutting.</b> Model dimensions contain no saw kerf, weld allowance, end-cap clearance, powder-coat build, or installation tolerance.</p></aside>
+
+    <nav class="filters" aria-label="Drawing filters">
+      <button type="button" data-filter="all" aria-pressed="true">Show all</button><button type="button" data-filter="fence" aria-pressed="false">Fence modules</button>
+      <button type="button" data-filter="gates" aria-pressed="false">Gate assemblies</button><button type="button" data-filter="schedule" aria-pressed="false">Cut schedule</button>
+    </nav>
+
+    <section class="sheet" data-section="fence" id="fence-modules">
+      <div class="sheet-heading"><div><p class="sheet-label">Sheet A-01</p><h2>Fence module</h2></div><p>Nine instances use the same verified aluminium members: two modules on the front run and seven on the right-side run.</p></div>
+      <div class="drawing">
+        <svg viewBox="0 0 1200 520" role="img" aria-labelledby="fenceTitle fenceDesc">
+          <title id="fenceTitle">Standard slatted fence module elevation</title><desc id="fenceDesc">A 2010 millimetre wide by 1200 millimetre high module containing seven horizontal slats and two vertical posts.</desc>
+          <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto-start-reverse"><path d="M8 0 0 4 8 8" fill="none" stroke="#176b87" stroke-width="1.2"/></marker></defs>
+          <line x1="116" y1="410" x2="1080" y2="410" class="datum"/>
+          <g data-part="fence-post" tabindex="0" aria-label="FP-01 vertical aluminium posts">
+            <rect x="202" y="148" width="18" height="252" class="post"/><rect x="980" y="148" width="18" height="252" class="post"/>
+            <rect x="177" y="160" width="62" height="22" rx="2" fill="#176b87"/><text x="208" y="175" text-anchor="middle" class="part-code">FP-01</text>
+          </g>
+          <g data-part="fence-slat" tabindex="0" aria-label="FS-01 seven horizontal aluminium slats">
+            <rect x="204" y="152" width="792" height="31" class="slat"/><rect x="204" y="188" width="792" height="31" class="slat"/>
+            <rect x="204" y="224" width="792" height="31" class="slat"/><rect x="204" y="260" width="792" height="31" class="slat"/>
+            <rect x="204" y="296" width="792" height="31" class="slat"/><rect x="204" y="332" width="792" height="31" class="slat"/>
+            <rect x="204" y="368" width="792" height="31" class="slat"/><rect x="563" y="248" width="74" height="23" rx="2" fill="#176b87"/>
+            <text x="600" y="264" text-anchor="middle" class="part-code">FS-01 × 7</text>
+          </g>
+          <line x1="202" y1="430" x2="202" y2="474" class="extension"/><line x1="998" y1="430" x2="998" y2="474" class="extension"/><line x1="202" y1="460" x2="998" y2="460" class="dim"/><text x="600" y="452" text-anchor="middle" class="dim-text">2010</text>
+          <line x1="160" y1="148" x2="190" y2="148" class="extension"/><line x1="160" y1="400" x2="190" y2="400" class="extension"/><line x1="174" y1="148" x2="174" y2="400" class="dim"/><text x="163" y="278" transform="rotate(-90 163 278)" text-anchor="middle" class="dim-text">1200 ASSEMBLY</text>
+          <line x1="1030" y1="148" x2="1058" y2="148" class="extension"/><line x1="1030" y1="400" x2="1058" y2="400" class="extension"/><line x1="1044" y1="148" x2="1044" y2="400" class="dim"/><text x="1058" y="278" transform="rotate(90 1058 278)" text-anchor="middle" class="dim-text">1120 POST CUT</text>
+          <text x="202" y="112" class="svg-note">SLAT: 2010 × 140 × 20 · 7 PER MODULE</text><text x="202" y="130" class="svg-note">POST: 1120 × 33 × 20 · 2 PER MODULE</text>
+        </svg>
+      </div>
+      <div class="module-grid">
+        <article class="module-card"><b>FRONT RUN · 2 MODULES</b><p>PIDs 13932, 13972<br>14 slats + 4 posts</p></article>
+        <article class="module-card"><b>RIGHT SIDE · 7 MODULES</b><p>PIDs 13973, 13979, 13980, 13981, 14085, 14132, 14133</p></article>
+        <article class="module-card"><b>PROFILE STOCK</b><p>Slats: 126.63 m net<br>Posts: 20.16 m net<br>Waste not included</p></article>
+      </div>
+    </section>
+
+    <section class="sheet" data-section="gates" id="gate-assemblies">
+      <div class="sheet-heading"><div><p class="sheet-label">Sheet A-02</p><h2>Gate assembly</h2></div><p>The model groups the leaves as joined geometry. Overall leaf dimensions are measured; internal extrusion cuts require fabricator detailing before release.</p></div>
+      <div class="drawing">
+        <svg viewBox="0 0 1200 540" role="img" aria-labelledby="gateTitle gateDesc">
+          <title id="gateTitle">Pedestrian and vehicle gate elevation</title><desc id="gateDesc">A combined 5100 millimetre wide gate assembly with three posts, a 771 millimetre pedestrian leaf, and a 3788 millimetre vehicle leaf.</desc>
+          <defs><marker id="arrowGate" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto-start-reverse"><path d="M8 0 0 4 8 8" fill="none" stroke="#176b87" stroke-width="1.2"/></marker></defs>
+          <style>.gate-dim{marker-start:url(#arrowGate);marker-end:url(#arrowGate)}</style>
+          <g data-part="gate-assembly" tabindex="0" aria-label="GA-01 combined gate assembly"><rect x="113" y="116" width="974" height="302" class="ghost"/></g>
+          <g data-part="gate-post" tabindex="0" aria-label="GP-01 three gate post assemblies">
+            <rect x="116" y="116" width="40" height="302" class="post"/><rect x="302" y="116" width="40" height="302" class="post"/><rect x="1044" y="116" width="40" height="302" class="post"/>
+            <rect x="116" y="84" width="74" height="22" rx="2" fill="#176b87"/><text x="153" y="99" text-anchor="middle" class="part-code">GP-01 × 3</text>
+          </g>
+          <g data-part="pedestrian-leaf" tabindex="0" aria-label="PG-01 pedestrian gate leaf">
+            <rect x="157" y="151" width="144" height="266" class="metal-fill"/>
+            <path d="M168 176H290M168 206H290M168 236H290M168 266H290M168 296H290M168 326H290M168 356H290" stroke="#768087" stroke-width="10"/>
+            <rect x="190" y="260" width="78" height="22" rx="2" fill="#176b87"/><text x="229" y="275" text-anchor="middle" class="part-code">PG-01</text>
+          </g>
+          <g data-part="vehicle-leaf" tabindex="0" aria-label="VG-01 vehicle gate leaf">
+            <rect x="343" y="151" width="700" height="266" class="metal-fill"/><path d="M365 173H690L805 395H365Z" class="infill"/><path d="M1021 173H712L827 395H1021Z" class="infill"/>
+            <path d="M365 173H1021V395H365Z M690 173L805 395 M712 173L827 395" class="metal-line"/><rect x="654" y="260" width="78" height="22" rx="2" fill="#176b87"/><text x="693" y="275" text-anchor="middle" class="part-code">VG-01</text>
+          </g>
+          <line x1="116" y1="442" x2="116" y2="494" class="extension"/><line x1="1084" y1="442" x2="1084" y2="494" class="extension"/><line x1="116" y1="480" x2="1084" y2="480" class="dim gate-dim"/><text x="600" y="472" text-anchor="middle" class="dim-text">5100 OVERALL</text>
+          <line x1="157" y1="421" x2="157" y2="455" class="extension"/><line x1="301" y1="421" x2="301" y2="455" class="extension"/><line x1="157" y1="442" x2="301" y2="442" class="dim gate-dim"/><text x="229" y="435" text-anchor="middle" class="dim-text">771</text>
+          <line x1="343" y1="421" x2="343" y2="455" class="extension"/><line x1="1043" y1="421" x2="1043" y2="455" class="extension"/><line x1="343" y1="442" x2="1043" y2="442" class="dim gate-dim"/><text x="693" y="435" text-anchor="middle" class="dim-text">3788</text>
+          <line x1="75" y1="116" x2="106" y2="116" class="extension"/><line x1="75" y1="418" x2="106" y2="418" class="extension"/><line x1="91" y1="116" x2="91" y2="418" class="dim gate-dim"/><text x="79" y="267" transform="rotate(-90 79 267)" text-anchor="middle" class="dim-text">1500 OVERALL</text>
+          <line x1="1100" y1="151" x2="1130" y2="151" class="extension"/><line x1="1100" y1="417" x2="1130" y2="417" class="extension"/><line x1="1115" y1="151" x2="1115" y2="417" class="dim gate-dim"/><text x="1128" y="284" transform="rotate(90 1128 284)" text-anchor="middle" class="dim-text">1320 LEAF</text>
+        </svg>
+      </div>
+      <div class="legend"><span><i class="swatch cut"></i> Black aluminium</span><span><i class="swatch assembly"></i> Overall assembly envelope</span><span><i class="swatch reference"></i> Written dimension governs</span></div>
+    </section>
+
+    <section class="sheet" data-section="schedule" id="cut-schedule">
+      <div class="sheet-heading"><div><p class="sheet-label">Sheet A-03</p><h2>Cut schedule</h2></div><p>Hover or focus a row to locate the matching part in the elevation. Quantities exclude waste and spares.</p></div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Code</th><th>Assembly</th><th>Part / profile</th><th>Finished size (L × H × D)</th><th>Cut length</th><th>Qty</th><th>Release</th><th>SketchUp reference</th></tr></thead>
+        <tbody>
+          <tr data-part="fence-slat" tabindex="0"><td class="code">FS-01</td><td>Fence module</td><td>Horizontal aluminium slat</td><td class="measure">2010 × 140 × 20</td><td class="measure">2010</td><td class="qty">63</td><td><span class="badge cut">Model cut</span></td><td class="pid">Definition PID 14249</td></tr>
+          <tr data-part="fence-post" tabindex="0"><td class="code">FP-01</td><td>Fence module</td><td>Vertical aluminium post</td><td class="measure">1120 × 33 × 20</td><td class="measure">1120</td><td class="qty">18</td><td><span class="badge cut">Model cut</span></td><td class="pid">Definition PID 14250</td></tr>
+          <tr data-part="vehicle-leaf" tabindex="0"><td class="code">VG-01</td><td>Gate assembly</td><td>Vehicle gate leaf, joined model geometry</td><td class="measure">3788 × 1320 × 78</td><td class="measure">Detail required</td><td class="qty">1</td><td><span class="badge verify">Verify internals</span></td><td class="pid">Group PID 713949</td></tr>
+          <tr data-part="pedestrian-leaf" tabindex="0"><td class="code">PG-01</td><td>Gate assembly</td><td>Pedestrian gate leaf, joined model geometry</td><td class="measure">771 × 1320 × 102</td><td class="measure">Detail required</td><td class="qty">1</td><td><span class="badge verify">Verify internals</span></td><td class="pid">Group PID 713950</td></tr>
+          <tr data-part="gate-post" tabindex="0"><td class="code">GP-01</td><td>Gate assembly</td><td>Gate post assembly</td><td class="measure">1500 × 341 × 206</td><td class="measure">Detail required</td><td class="qty">3</td><td><span class="badge verify">Verify internals</span></td><td class="pid">PIDs 713946–713948</td></tr>
+          <tr data-part="gate-assembly" tabindex="0"><td class="code">GA-01</td><td>Gate assembly</td><td>Combined installed envelope</td><td class="measure">5100 × 1500 × 379</td><td class="measure">Reference only</td><td class="qty">1</td><td><span class="badge reference">Survey</span></td><td class="pid">Component PID 1106226</td></tr>
+        </tbody>
+      </table></div>
+      <div class="schedule-note">
+        <article class="note-card"><h3>Verified fence stock</h3><p>The model contains nine instances of the same slat-fence section. Their placement changes, but the nested member geometry remains 2010 mm slats and 1120 mm posts.</p></article>
+        <article class="note-card warning"><h3>Gate release restriction</h3><p>The gate leaves are single connected meshes, not separate extrusion components. Use the overall measurements for shop detailing; do not derive individual frame cuts from the mesh without confirming profile centre-lines and joints.</p></article>
+      </div>
+    </section>
+    <footer class="footer"><span>MODEL SOURCE · elysian-house-yard.skp · ACTIVE SNAPSHOT 2026-09-14</span><span>REV 01 · BLACK ALUMINIUM PACKAGE</span></footer>
+  </main>
+
+  <script>
+    (() => {
+      const linked = [...document.querySelectorAll('[data-part]')];
+      const filters = [...document.querySelectorAll('[data-filter]')];
+      const sections = [...document.querySelectorAll('[data-section]')];
+      function highlight(part) {
+        linked.forEach((element) => {
+          element.classList.toggle('is-active', element.dataset.part === part);
+          element.classList.toggle('is-dimmed', Boolean(part) && element.dataset.part !== part);
+        });
+      }
+      linked.forEach((element) => {
+        element.addEventListener('mouseenter', () => highlight(element.dataset.part));
+        element.addEventListener('mouseleave', () => highlight(''));
+        element.addEventListener('focus', () => highlight(element.dataset.part));
+        element.addEventListener('blur', () => highlight(''));
+        element.addEventListener('click', () => highlight(element.dataset.part));
+      });
+      filters.forEach((button) => button.addEventListener('click', () => {
+        const filter = button.dataset.filter;
+        filters.forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
+        sections.forEach((section) => { section.hidden = filter !== 'all' && section.dataset.section !== filter; });
+        highlight('');
+      }));
+      document.getElementById('clearHighlight').addEventListener('click', () => highlight(''));
+      document.getElementById('printSheet').addEventListener('click', () => window.print());
+    })();
+  </script>
+</body>
+</html>
