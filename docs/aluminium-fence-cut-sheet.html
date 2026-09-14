@@ -95,7 +95,7 @@
     @media (max-width: 850px) { .title-block { grid-template-columns: 1fr; } .meta { border-left: 0; } .sheet-heading, .schedule-note { grid-template-columns: 1fr; } .module-grid { grid-template-columns: 1fr; } .brand span { display: none; } }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } [data-part] { transition: none; } }
     @page { size: A3 landscape; margin: 10mm; }
-    @media print { :root, body { background: white; } body { print-color-adjust: exact; -webkit-print-color-adjust: exact; } .topbar, .filters { display: none; } .document { width: 100%; margin: 0; box-shadow: none; } .title-block { min-height: 0; } .hero { padding: 16mm; } h1 { font-size: 56pt; } .sheet { padding: 10mm 0; break-before: page; } .drawing, .table-wrap { overflow: visible; } svg, table { min-width: 0; } .module-grid { grid-template-columns: repeat(3, 1fr); } .schedule-note { grid-template-columns: repeat(2, 1fr); } [data-section][hidden] { display: block !important; } }
+    @media print { :root, body { background: white; } body { print-color-adjust: exact; -webkit-print-color-adjust: exact; } .topbar, .filters { display: none; } .document { width: 100%; margin: 0; box-shadow: none; } .title-block { min-height: 0; } .hero { padding: 16mm; } h1 { font-size: 56pt; } .sheet { padding: 10mm 0; break-before: page; } #all-parts-overview { padding-block: 6mm; } #all-parts-overview .sheet-heading { margin-bottom: 4mm; } #all-parts-overview svg { height: 165mm; } .drawing, .table-wrap { overflow: visible; } svg, table { min-width: 0; } .module-grid { grid-template-columns: repeat(3, 1fr); } .schedule-note { grid-template-columns: repeat(2, 1fr); } [data-section][hidden] { display: block !important; } }
   </style>
 </head>
 <body>
@@ -123,9 +123,54 @@
     <aside class="notice" role="note"><strong>HOLD POINT</strong><p><b>Verify all site openings before cutting.</b> Model dimensions contain no saw kerf, weld allowance, end-cap clearance, powder-coat build, or installation tolerance.</p></aside>
 
     <nav class="filters" aria-label="Drawing filters">
-      <button type="button" data-filter="all" aria-pressed="true">Show all</button><button type="button" data-filter="fence" aria-pressed="false">Fence modules</button>
+      <button type="button" data-filter="all" aria-pressed="true">Show all</button><button type="button" data-filter="overview" aria-pressed="false">One-sheet 2D</button><button type="button" data-filter="fence" aria-pressed="false">Fence modules</button>
       <button type="button" data-filter="gates" aria-pressed="false">Gate assemblies</button><button type="button" data-filter="schedule" aria-pressed="false">Cut schedule</button>
     </nav>
+
+    <section class="sheet" data-section="overview" id="all-parts-overview">
+      <div class="sheet-heading"><div><p class="sheet-label">Sheet A-00</p><h2>All parts / 2D</h2></div><p>One consolidated verification drawing. Every governing black-aluminium dimension appears on this sheet; written dimensions govern.</p></div>
+      <div class="drawing">
+        <svg viewBox="0 0 1400 820" role="img" aria-labelledby="overviewTitle overviewDesc">
+          <title id="overviewTitle">All black aluminium fence and gate parts in one 2D drawing</title><desc id="overviewDesc">Slat, fence post, gate post, pedestrian leaf, vehicle leaf, and combined gate assembly with dimensions in millimetres.</desc>
+          <defs><marker id="arrowOverview" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto-start-reverse"><path d="M8 0 0 4 8 8" fill="none" stroke="#176b87" stroke-width="1.2"/></marker></defs>
+          <style>.overview-dim{marker-start:url(#arrowOverview);marker-end:url(#arrowOverview)}</style>
+
+          <text x="78" y="58" class="svg-note">INDIVIDUAL MEMBERS</text>
+          <g data-part="fence-slat" tabindex="0" aria-label="Horizontal fence slat 2010 by 140 by 20 millimetres">
+            <rect x="110" y="116" width="500" height="35" class="slat"/><rect x="110" y="88" width="64" height="21" rx="2" fill="#176b87"/><text x="142" y="103" text-anchor="middle" class="part-code">FS-01</text>
+          </g>
+          <line x1="110" y1="172" x2="110" y2="210" class="extension"/><line x1="610" y1="172" x2="610" y2="210" class="extension"/><line x1="110" y1="196" x2="610" y2="196" class="dim overview-dim"/><text x="360" y="188" text-anchor="middle" class="dim-text">2010</text>
+          <line x1="72" y1="116" x2="98" y2="116" class="extension"/><line x1="72" y1="151" x2="98" y2="151" class="extension"/><line x1="84" y1="116" x2="84" y2="151" class="dim overview-dim"/><text x="68" y="134" transform="rotate(-90 68 134)" text-anchor="middle" class="dim-text">140</text><text x="622" y="137" class="dim-text">DEPTH 20</text>
+
+          <g data-part="fence-post" tabindex="0" aria-label="Fence post 1120 by 33 by 20 millimetres">
+            <rect x="800" y="91" width="24" height="280" class="post"/><rect x="767" y="58" width="88" height="21" rx="2" fill="#176b87"/><text x="811" y="73" text-anchor="middle" class="part-code">FP-01</text>
+          </g>
+          <line x1="750" y1="91" x2="786" y2="91" class="extension"/><line x1="750" y1="371" x2="786" y2="371" class="extension"/><line x1="768" y1="91" x2="768" y2="371" class="dim overview-dim"/><text x="754" y="231" transform="rotate(-90 754 231)" text-anchor="middle" class="dim-text">1120</text>
+          <line x1="800" y1="390" x2="824" y2="390" class="dim overview-dim"/><text x="812" y="414" text-anchor="middle" class="dim-text">33</text><text x="846" y="230" class="dim-text">DEPTH 20</text>
+
+          <g data-part="gate-post" tabindex="0" aria-label="Gate post 1500 by 341 by 206 millimetres">
+            <rect x="1110" y="70" width="68" height="330" class="post"/><rect x="1100" y="38" width="88" height="21" rx="2" fill="#176b87"/><text x="1144" y="53" text-anchor="middle" class="part-code">GP-01</text>
+          </g>
+          <line x1="1060" y1="70" x2="1098" y2="70" class="extension"/><line x1="1060" y1="400" x2="1098" y2="400" class="extension"/><line x1="1078" y1="70" x2="1078" y2="400" class="dim overview-dim"/><text x="1064" y="235" transform="rotate(-90 1064 235)" text-anchor="middle" class="dim-text">1500</text>
+          <line x1="1110" y1="420" x2="1178" y2="420" class="dim overview-dim"/><text x="1144" y="444" text-anchor="middle" class="dim-text">341</text><text x="1200" y="238" class="dim-text">DEPTH 206</text>
+
+          <line x1="70" y1="468" x2="1330" y2="468" class="datum"/><text x="78" y="454" class="svg-note">COMBINED GATE ASSEMBLY</text>
+          <g data-part="gate-assembly" tabindex="0" aria-label="Combined gate assembly 5100 by 1500 by 379 millimetres"><rect x="146" y="510" width="1110" height="225" class="ghost"/></g>
+          <g data-part="gate-post" tabindex="0" aria-label="Three gate posts"><rect x="150" y="510" width="42" height="225" class="post"/><rect x="370" y="510" width="42" height="225" class="post"/><rect x="1210" y="510" width="42" height="225" class="post"/></g>
+          <g data-part="pedestrian-leaf" tabindex="0" aria-label="Pedestrian gate leaf 771 by 1320 by 102 millimetres">
+            <rect x="193" y="537" width="176" height="198" class="metal-fill"/><path d="M207 560H355M207 588H355M207 616H355M207 644H355M207 672H355M207 700H355" stroke="#768087" stroke-width="9"/><rect x="244" y="623" width="74" height="21" rx="2" fill="#176b87"/><text x="281" y="638" text-anchor="middle" class="part-code">PG-01</text>
+          </g>
+          <g data-part="vehicle-leaf" tabindex="0" aria-label="Vehicle gate leaf 3788 by 1320 by 78 millimetres">
+            <rect x="413" y="537" width="796" height="198" class="metal-fill"/><path d="M432 554H792L903 718H432Z" class="infill"/><path d="M1190 554H813L924 718H1190Z" class="infill"/><path d="M432 554H1190V718H432Z M792 554L903 718 M813 554L924 718" class="metal-line"/><rect x="774" y="623" width="74" height="21" rx="2" fill="#176b87"/><text x="811" y="638" text-anchor="middle" class="part-code">VG-01</text>
+          </g>
+          <text x="281" y="496" text-anchor="middle" class="svg-note">LEAF 771 × 1320 × 102</text><text x="811" y="496" text-anchor="middle" class="svg-note">LEAF 3788 × 1320 × 78</text>
+          <line x1="193" y1="746" x2="193" y2="779" class="extension"/><line x1="369" y1="746" x2="369" y2="779" class="extension"/><line x1="193" y1="764" x2="369" y2="764" class="dim overview-dim"/><text x="281" y="757" text-anchor="middle" class="dim-text">771</text>
+          <line x1="413" y1="746" x2="413" y2="779" class="extension"/><line x1="1209" y1="746" x2="1209" y2="779" class="extension"/><line x1="413" y1="764" x2="1209" y2="764" class="dim overview-dim"/><text x="811" y="757" text-anchor="middle" class="dim-text">3788</text>
+          <line x1="150" y1="805" x2="1252" y2="805" class="dim overview-dim"/><text x="701" y="798" text-anchor="middle" class="dim-text">5100 OVERALL · DEPTH 379</text>
+          <line x1="112" y1="510" x2="138" y2="510" class="extension"/><line x1="112" y1="735" x2="138" y2="735" class="extension"/><line x1="124" y1="510" x2="124" y2="735" class="dim overview-dim"/><text x="110" y="623" transform="rotate(-90 110 623)" text-anchor="middle" class="dim-text">1500 OVERALL</text>
+        </svg>
+      </div>
+    </section>
 
     <section class="sheet" data-section="fence" id="fence-modules">
       <div class="sheet-heading"><div><p class="sheet-label">Sheet A-01</p><h2>Fence module</h2></div><p>Nine instances use the same verified aluminium members: two modules on the front run and seven on the right-side run.</p></div>
